@@ -8,6 +8,8 @@ export const signUpSchema = z.object({
 
   email: z
     .string()
+    .trim()
+    .toLowerCase()
     .email("Invalid email address"),
 
   password: z
@@ -30,6 +32,8 @@ export const signUpSchema = z.object({
 export const signInSchema = z.object({
   email: z
     .string()
+    .trim()
+    .toLowerCase()
     .email("Invalid email address"),
 
   password: z
@@ -40,16 +44,21 @@ export const signInSchema = z.object({
 export const sendOtpSchema = z.object({
   email: z
     .string()
+    .trim()
+    .toLowerCase()
     .email("Invalid email address"),
 });
 
 export const verifySchema = z.object({
   email: z
     .string()
+    .trim()
+    .toLowerCase()
     .email("Invalid email address"),
 
   otp: z
     .string()
+    .trim()
     .length(6, "OTP must be exactly 6 digits")
     .regex(/^[0-9]+$/, "OTP must be numbers only"),
 });
@@ -57,10 +66,13 @@ export const verifySchema = z.object({
 export const resetPasswordSchema = z.object({
   email: z
     .string()
+    .trim()
+    .toLowerCase()
     .email("Invalid email address"),
 
   otp: z
     .string()
+    .trim()
     .length(6, "OTP must be exactly 6 digits")
     .regex(/^[0-9]+$/, "OTP must be numbers only"),
 

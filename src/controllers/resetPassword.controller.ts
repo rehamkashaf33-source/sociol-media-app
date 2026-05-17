@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
+import { z } from "zod";
 import { User } from "../models/user.model";
 import { resetPasswordSchema } from "../schemas/auth.schema";
+import redis from "../config/redis";
 
 export const resetPassword = async (
   req: Request,
@@ -12,25 +14,44 @@ export const resetPassword = async (
 
     const user = await User.findOne({ email: data.email });
 
-    if (!user || user.otp !== data.otp) {
-      res.status(400).json({ message: "Invalid OTP" });
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
       return;
     }
 
-    if (!user.otpExpires || user.otpExpires < new Date()) {
-      res.status(400).json({ message: "OTP expired" });
+    const storedOtp = await redis.get(`otp:${data.email}`);
+
+    if (!storedOtp) {
+      res.status(400).json({
+        message: "OTP expired or not requested",
+      });
+      return;
+    }
+
+    if (String(storedOtp) !== String(data.otp)) {
+      res.status(400).json({
+        message: "Invalid OTP",
+      });
       return;
     }
 
     user.password = await bcrypt.hash(data.newPassword, 12);
 
-    user.otp = undefined;
-    user.otpExpires = undefined;
-
     await user.save();
+
+    await redis.del(`otp:${data.email}`);
 
     res.json({ message: "Password reset success" });
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    if (error instanceof z.ZodError) {
+      res.status(400).json({
+        message: error.issues[0].message,
+      });
+      return;
+    }
+
+    res.status(500).json({
+      message: "Server error",
+    });
   }
 };

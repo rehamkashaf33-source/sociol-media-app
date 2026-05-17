@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
+import { z } from "zod";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model";
 import { signInSchema } from "../schemas/auth.schema";
@@ -48,6 +49,10 @@ export const signIn = async (
       token,
     });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ message: error.issues[0].message });
+      return;
+    }
     res.status(500).json({ message: "Server error" });
   }
 };

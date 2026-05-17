@@ -1,0 +1,40 @@
+src/controllers/comment.controller.ts(7,31): error TS2307: Cannot find module '../common/reaction.service' or its corresponding type declarations.
+src/controllers/comment.controller.ts(23,7): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type 'string | string[]' is not assignable to type 'ObjectIdQueryTypeCasting | undefined'.
+      Type 'string[]' is not assignable to type 'ObjectIdQueryTypeCasting | undefined'.
+        Type 'string[]' is missing the following properties from type 'ObjectId': _bsontype, id, toHexString, toJSON, and 5 more.
+src/controllers/comment.controller.ts(27,32): error TS2339: Property '_id' does not exist on type 'never'.
+src/controllers/comment.controller.ts(30,37): error TS2339: Property 'populate' does not exist on type 'never'.
+src/controllers/friend.controller.ts(11,8): error TS1261: Already included file name 'C:/Users/Riham/Downloads/social-media-app/src/schemas/social.schema.ts' differs from file name 'C:/Users/Riham/Downloads/social-media-app/src/schemas/Social.schema.ts' only in casing.
+  The file is in the program because:
+    Imported via "../schemas/social.schema" from file 'C:/Users/Riham/Downloads/social-media-app/src/controllers/friend.controller.ts'
+    Imported via "../schemas/social.schema" from file 'C:/Users/Riham/Downloads/social-media-app/src/controllers/search.controller.ts'
+    Imported via "../schemas/social.schema" from file 'C:/Users/Riham/Downloads/social-media-app/src/controllers/comment.controller.ts'
+    Imported via "../schemas/social.schema" from file 'C:/Users/Riham/Downloads/social-media-app/src/controllers/post.controller.ts'
+    Matched by include pattern 'src/**/*' in 'C:/Users/Riham/Downloads/social-media-app/tsconfig.json'
+src/controllers/post.controller.ts(8,31): error TS2307: Cannot find module '../common/reaction.service' or its corresponding type declarations.
+src/controllers/search.controller.ts(24,7): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(filter?: _QueryFilter<{ _id: ObjectId; username: string; email: string; password: string; otp: string; otpExpires: Date; isVerified: boolean; createdAt: Date; $assertPopulated: <Paths = {}>(path: string | string[], values?: Partial<...> | undefined) => PopulateDocumentResult<...>; ... 218 more ...; "schema.virtualpath": (name: string) => VirtualType<...> | null; }> | undefined, projection?: ProjectionType<...> | ... 1 more ... | undefined, options?: (QueryOptions<...> & Abortable) | undefined): Query<...>', gave the following error.
+    Type '{ $nin: (string | Types.ObjectId | undefined)[]; }' is not assignable to type 'StrictCondition<ApplyBasicQueryCasting<ObjectId>> | undefined'.
+      Types of property '$nin' are incompatible.
+        Type '(string | ObjectId | undefined)[]' is not assignable to type 'readonly (string | RegExp | ObjectId | BSONRegExp | ObjectIdQueryTypeCasting[] | null)[]'.
+          Type 'string | ObjectId | undefined' is not assignable to type 'string | RegExp | ObjectId | BSONRegExp | ObjectIdQueryTypeCasting[] | null'.
+            Type 'undefined' is not assignable to type 'string | RegExp | ObjectId | BSONRegExp | ObjectIdQueryTypeCasting[] | null'.
+  Overload 2 of 4, '(filter?: Query<any, any, {}, unknown, "find", Record<string, never>> | undefined, projection?: ProjectionType<IUser> | null | undefined, options?: (QueryOptions<...> & Abortable) | undefined): Query<...>', gave the following error.
+    Object literal may only specify known properties, and '_id' does not exist in type 'Query<any, any, {}, unknown, "find", Record<string, never>>'.
+src/index.ts(25,24): error TS2307: Cannot find module './routes/post.routes' or its corresponding type declarations.
+src/index.ts(26,26): error TS1261: Already included file name 'C:/Users/Riham/Downloads/social-media-app/src/routes/friend.routes.ts' differs from file name 'C:/Users/Riham/Downloads/social-media-app/src/routes/Friend.routes.ts' only in casing.
+  The file is in the program because:
+    Imported via "./routes/friend.routes" from file 'C:/Users/Riham/Downloads/social-media-app/src/index.ts'
+    Matched by include pattern 'src/**/*' in 'C:/Users/Riham/Downloads/social-media-app/tsconfig.json'
+src/index.ts(27,26): error TS1261: Already included file name 'C:/Users/Riham/Downloads/social-media-app/src/routes/search.routes.ts' differs from file name 'C:/Users/Riham/Downloads/social-media-app/src/routes/Search.routes.ts' only in casing.
+  The file is in the program because:
+    Imported via "./routes/search.routes" from file 'C:/Users/Riham/Downloads/social-media-app/src/index.ts'
+    Matched by include pattern 'src/**/*' in 'C:/Users/Riham/Downloads/social-media-app/tsconfig.json'
+src/schemas/social.schema.ts(12,11): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(values: readonly ["like", "love", "haha", "sad", "angry"], params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+    Object literal may only specify known properties, and 'errorMap' does not exist in type '{ error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; }'.
+  Overload 2 of 2, '(entries: Readonly<Record<string, EnumValue>>, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+    Argument of type 'string[]' is not assignable to parameter of type 'Readonly<Record<string, EnumValue>>'.
+      Index signature for type 'string' is missing in type 'string[]'.

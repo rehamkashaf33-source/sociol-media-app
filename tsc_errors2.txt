@@ -1,0 +1,16 @@
+src/controllers/comment.controller.ts(23,7): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Type 'string | string[]' is not assignable to type 'ObjectIdQueryTypeCasting | undefined'.
+      Type 'string[]' is not assignable to type 'ObjectIdQueryTypeCasting | undefined'.
+        Type 'string[]' is missing the following properties from type 'ObjectId': _bsontype, id, toHexString, toJSON, and 5 more.
+src/controllers/comment.controller.ts(27,32): error TS2339: Property '_id' does not exist on type 'never'.
+src/controllers/comment.controller.ts(30,37): error TS2339: Property 'populate' does not exist on type 'never'.
+src/controllers/search.controller.ts(24,7): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(filter?: _QueryFilter<{ _id: ObjectId; username: string; email: string; password: string; otp: string; otpExpires: Date; isVerified: boolean; createdAt: Date; $assertPopulated: <Paths = {}>(path: string | string[], values?: Partial<...> | undefined) => PopulateDocumentResult<...>; ... 218 more ...; "schema.virtualpath": (name: string) => VirtualType<...> | null; }> | undefined, projection?: ProjectionType<...> | ... 1 more ... | undefined, options?: (QueryOptions<...> & Abortable) | undefined): Query<...>', gave the following error.
+    Type '{ $nin: (string | Types.ObjectId | undefined)[]; }' is not assignable to type 'StrictCondition<ApplyBasicQueryCasting<ObjectId>> | undefined'.
+      Types of property '$nin' are incompatible.
+        Type '(string | ObjectId | undefined)[]' is not assignable to type 'readonly (string | RegExp | ObjectId | BSONRegExp | ObjectIdQueryTypeCasting[] | null)[]'.
+          Type 'string | ObjectId | undefined' is not assignable to type 'string | RegExp | ObjectId | BSONRegExp | ObjectIdQueryTypeCasting[] | null'.
+            Type 'undefined' is not assignable to type 'string | RegExp | ObjectId | BSONRegExp | ObjectIdQueryTypeCasting[] | null'.
+  Overload 2 of 4, '(filter?: Query<any, any, {}, unknown, "find", Record<string, never>> | undefined, projection?: ProjectionType<IUser> | null | undefined, options?: (QueryOptions<...> & Abortable) | undefined): Query<...>', gave the following error.
+    Object literal may only specify known properties, and '_id' does not exist in type 'Query<any, any, {}, unknown, "find", Record<string, never>>'.

@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
+import { z } from "zod";
 import { User } from "../models/user.model";
 import { signUpSchema } from "../schemas/auth.schema";
 
@@ -39,6 +40,10 @@ export const signUp = async (
       email: user.email,
     });
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      res.status(400).json({ message: error.issues[0].message });
+      return;
+    }
     res.status(500).json({ message: "Server error" });
   }
 };
